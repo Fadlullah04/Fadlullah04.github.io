@@ -2,10 +2,53 @@
  <html>
  <head>
  	<meta charset="utf-8">
- 	<title>My first website</title>
+ 	<style>
+ 		*{
+ 			margin: 0;
+ 			box-sizing: 0;
+ 		}
+
+ 		body{
+ 			background: blue;
+ 			color: white;
+ 			font-family: monospace;
+ 			display: flex;
+ 			align-items: center;
+ 			justify-content: center;
+ 			margin: 0;
+ 			min-height: 100vh;
+ 		}
+ 		.heart{
+ 			position: fixed;
+ 			top: -1vh;
+ 			font-size: 2rem;
+ 			transform: translateY(0);
+ 			animation: fall linear 2s infinite;
+ 		}
+ 		@keyframes fall{
+ 			to{
+ 				transform: translateY(105vh);
+ 			}
+ 		}
+ 	</style>
  </head>
  <body>
- <h1>Hello World!</h1>
- <p>This is my first, or bro I'm not even sure<br>how many times i've said this</p>
+ 	<script>
+ 		function createHeart(){
+ 			const heart  = document.createElement('div');
+ 			heart.classList.add('heart');
+ 			heart.style.left = Math.random() * 100 + 'vw';
+ 			heart.innerText = "❤"
+ 			heart.style.animationDirection = Math.random() * 2 + 3 + 's';
+
+ 			document.body.appendChild(heart);
+
+ 			setTimeout(() => {
+ 				heart.remove();
+
+ 			}, 2000)
+ 		}
+ 		setInterval(createHeart, 300);
+ 	</script>
  </body>
  </html>
